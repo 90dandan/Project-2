@@ -9,15 +9,18 @@
 </head>
 <body>
     <a href="" class="brand-logo left">MmmKay Ultra Vinyl</a>
-<!-- new html below -->
-<ul class="right">
-    <li>
-    <% if (user) { %>
+    <ul class="right">
+        <li>
+        <% if (user) { %>
         <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
-    <% } else { %>
-        <a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a>
-    <% } %>
-    </li>
-</ul>
+        <% } else { %>
+            <a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a>
+            <% } %>
+        </li>
+        <form action="/albums" method="POST">
+            <input type="text" name="album">
+            <button type="submit">Add Album</button><br><br>
+        </form>
+    </ul>
 </body>
 </html>
