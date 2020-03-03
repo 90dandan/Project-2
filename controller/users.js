@@ -2,8 +2,8 @@ const User = require('../models/user');
 
 module.exports = {
   index,
-  addAlbum,
-  delAlbum
+//   addAlbum,
+//   delAlbum
 };
 
 function index(req, res, next) {
@@ -26,13 +26,13 @@ function index(req, res, next) {
   });
 }
 
-function addAlbum(req, res, next) {
-    req.user.albums.push(req.body);
-    req.user.save(function(err) {
-      res.redirect('/users');
-  });
-}
+// function addAlbum(req, res, next) {
+//     req.user.albums.push(req.body);
+//     req.user.save(function(err) {
+//       res.redirect('/users');
+//   });
+// }
 
-function delAlbum(req, res) {
+// function delAlbum(req, res) {
     
-}
+// }

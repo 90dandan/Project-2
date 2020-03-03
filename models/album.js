@@ -3,9 +3,10 @@ const mongoose = require('mongoose');
 var albumSchema = new mongoose.Schema({
     name: String,
     tracks: Number,
-    yearRealeased: Date 
+    yearRealeased: Date,
+    rating: Number 
 }, {
     timestamps: true
 });
 
-module.exports = mongoose.model('Album', albumSchema);``
+module.exports = mongoose.model('Album', albumSchema);
