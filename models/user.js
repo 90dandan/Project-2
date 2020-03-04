@@ -1,9 +1,25 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-var userSchema = new mongoose.Schema({
+const commentsSchema = new Schema({
+    content: String,
+    rating: {type: Number, min:1, max: 5}
+})
+
+const albumSchema = new Schema({
+    name: String,
+    tracks: Number,
+    yearRealeased: Date,
+    rating: Number,
+    comments: [commentsSchema]
+}, {
+    timestamps: true
+});
+
+const userSchema = new mongoose.Schema({
     name: String,
     email: String,
-    //albums: [albumSchema],
+    albums: [albumSchema],
     googleId: String
 }, {
     timestamps: true

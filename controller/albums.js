@@ -1,5 +1,5 @@
 const Album = require('../models/album'); 
-//const Album = require('../config/data');
+
 
 module.exports = {
   show, 
