@@ -9,7 +9,7 @@ module.exports = {
 }
 
 function addAlbum(req, res, next) {
-   req.user.albums.push(req.body);
+   req.user.album.push(req.body);
    req.user.save(function(err) {
      res.redirect('/albums');
  });
