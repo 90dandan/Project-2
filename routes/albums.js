@@ -3,7 +3,8 @@ const router = express.Router();
 const albumsCtrl = require('../controller/albums');
 
 router.get('/', albumsCtrl.index)
-router.get('/new', albumsCtrl.addAlbum);
+router.post('/add', albumsCtrl.addAlbum);
+router.get('/new', albumsCtrl.newAlbum);
 router.get('/:id', albumsCtrl.show);
 //router.post('/', albumsCtrl.create);
 

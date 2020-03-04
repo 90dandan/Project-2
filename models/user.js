@@ -7,9 +7,9 @@ const commentsSchema = new Schema({
 })
 
 const albumSchema = new Schema({
-    name: String,
+    title: String,
     tracks: Number,
-    yearRealeased: Date,
+    releaseYear: Number,
     rating: Number,
     comments: [commentsSchema]
 }, {

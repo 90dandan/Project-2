@@ -1,18 +1,21 @@
-const Album = require('../models/album'); 
+const User = require('../models/user'); 
 
 
 module.exports = {
   show, 
   addAlbum,
   delAlbum,
-  index
+  index,
+  newAlbum
 }
 
 function addAlbum(req, res, next) {
-   req.user.album.push(req.body);
-   req.user.save(function(err) {
-     res.redirect('/albums');
- });
+   User.findById(req.user._id, function(err, user){
+     user.albums.push(req.body)
+     user.save(function(err) {
+       res.redirect('/albums');
+   });
+   });
 }
 
 function delAlbum(req, res) {
@@ -24,7 +27,11 @@ function show(req, res) {
 }
 
 function index(req, res) {
-  Album.find({}, function(err, albums) {
-    res.render('albums/index', { title: 'All Albums', albums });
+  User.findById(req.user._id, function(err, user) {
+    res.render('albums/index', { title: 'All Albums', user });
   });
+}
+
+function newAlbum(req, res) {
+  res.render('albums/new')
 }
