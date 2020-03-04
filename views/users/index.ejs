@@ -1,23 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>MmmKay Ultra Vinyl</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="stylesheets/style.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-</head>
-<body>
-    <a href="" class="brand-logo left">MmmKayUltra</a>
-    <ul class="right">
-        <li>
-        <% if (user) { %>
-        <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
-        <% } else { %>
-            <a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a>
-            <% } %>
-        </li>
-    </ul>
+<%- include('../partials/header') %>
     <h1>MmmKayUltra Vinyl Community</h1>
     <p>Welcome to MmmKayUltra Vinyl Community where you are able to view and interact with your friends album collection</p>
 </body>
