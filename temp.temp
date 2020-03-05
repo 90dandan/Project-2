@@ -1,0 +1,10 @@
+<form action="/comments/<%= comment._id %>?_method=PUT" method="POST">
+        <input name="text" value="<%= comment.text %>">
+        <button type="submit">UPDATE COMMENT</button>
+      </form>
+      <form action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
+        <button type="submit">DELETE COMMENT</button>
+      </form>   
+
+
+
