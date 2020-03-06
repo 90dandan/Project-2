@@ -28,9 +28,17 @@ function delAlbum(req, res) {
 }
 
 function show(req, res) {
-  let album = req.user.albums.id(req.params.id) ;
-          res.render('albums/details', {album})
+  let album = req.user.albums.id(req.params.id);
+  // Find the comments for the album
+  Comment.find({album: album._id}, function(err, comments) {
+    res.render('albums/details', {album, comments});
+  });
 }
+
+// function show(req, res) {
+//   let album = req.user.albums.id(req.params.id) ;
+//           res.render('albums/details', {album})
+// }
 
 function index(req, res) {
   res.render('albums/index', {title: "All Albums", user: req.user})
