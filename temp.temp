@@ -8,3 +8,98 @@
 
 
 
+
+
+
+this is details.ejs
+<%- include('../partials/header') %>
+
+<section id="details-page">
+    <div>Title: </div>
+    <div><%= album.title %></div>
+    <div>Release Year: </div>
+    <div><%= album.releaseYear %></div>
+    <h2>Comments</h2>
+    <label>Comment:</label>
+    <% comments.forEach(function(a) { %>
+    <form id="add-comments-form" method="POST" action="/albums/<%= album._id %>/comments">
+        <input type="submit" value="Add Comment">
+        <textarea name="content"><%= a.content %><</textarea>
+    </form>
+    <% }); %>
+    <div><%= album.comments %></div>
+    <form action="/albums/<%= album._id %>/comments?_method=PUT" method="POST">
+        <input name="text" value="<%= comment.text %>">
+        <button type="submit">UPDATE COMMENT</button>
+      </form>
+      <form action="/albums/<%= album._id %>/comments?_method=DELETE" method="POST">
+        <button type="submit">DELETE COMMENT</button>
+      </form>  
+</section>
+</body>
+
+</html>
+
+
+
+
+
+routes comments
+const express = require('express');
+const router = express.Router();
+const commentsCtrl = require('../controller/comments');
+
+
+router.post('/:id/comments', isLoggedIn, commentsCtrl.create);
+router.delete('/:id/comments', isLoggedIn, commentsCtrl.delete);
+router.put('/:id/comments', isLoggedIn, commentsCtrl.update);
+
+
+
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) return next();
+    res.redirect('/auth/google');
+}
+
+module.exports = router;
+
+
+controller commentsconst Album = require('../models/album');
+const Comment = require('../models/comment');
+module.exports = {
+    create,
+    update,
+    delete: deleteOne
+};
+
+function create(req, res) {
+    req.body.album = req.params.id;
+    Comment.create(req.body, function (err, comment) {
+        console.log(comment)
+        res.redirect(`/albums/${req.params.id}`)
+    })
+}
+
+function update(req, res) {
+    User.findOne({
+        'comments._id': req.params.id
+    }, function (err, user) {
+        const commentSubdoc = album.comments.is(req.params.id);
+        commentSubdoc.text = req.body.text;
+        user.save(function (err) {
+            res.redirect(`/details/${album.id}`)
+        })
+    })
+}
+
+function deleteOne(req, res) {
+    User.findOne({
+        'comments._id': req.params.id
+    }, function (err, user) {
+        const commentSubdoc = user.comments.id(req.params.id);
+        commentSubdoc.remove();
+        user.save(function (err) {
+            res.redirect(`/albums/${album.id}`);
+        })
+    })
+}

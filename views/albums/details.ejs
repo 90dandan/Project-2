@@ -1,27 +1,28 @@
 <%- include('../partials/header') %>
-
 <section id="details-page">
     <div>Title: </div>
     <div><%= album.title %></div>
     <div>Release Year: </div>
     <div><%= album.releaseYear %></div>
     <h2>Comments</h2>
-    <label>Comment:</label>
-    <% comments.forEach(function(a) { %>
     <form id="add-comments-form" method="POST" action="/albums/<%= album._id %>/comments">
+        <label>Comment:</label>
+        <textarea name="content"></textarea>
         <input type="submit" value="Add Comment">
-        <textarea name="content"><%= a.content %><</textarea>
+    </form>
+    <% comments.forEach(function(a) { %>
+    <div><%= a.content %></div>
+    <form id="delete-comments-form" method="POST" action="/albums/<%= album._id %>/comments/<%= a._id %>?_method=DELETE">
+        <label>Comment:</label>
+        <textarea hidden name="content"><%= a.content %></textarea>
+        <input type="submit" value="Delete Comment">
+    </form>
+    <form id="update-comments-form" method="POST" action="/albums/<%= album._id %>/comments/<%= a._id %>?_method=PUT">
+        <label>Comment:</label>
+        <textarea name="content"><%= a.content %></textarea>
+        <input type="submit" value="Update Comment">
     </form>
     <% }); %>
-    <div><%= album.comments %></div>
-    <form action="/comments/<%= comment._id %>?_method=PUT" method="POST">
-        <input name="text" value="<%= comment.text %>">
-        <button type="submit">UPDATE COMMENT</button>
-      </form>
-      <form action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
-        <button type="submit">DELETE COMMENT</button>
-      </form>  
 </section>
 </body>
-
 </html>
