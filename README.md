@@ -9,6 +9,12 @@
 ## view the app deployed by Heroku 
 [here](https://mmmkayultra.herokuapp.com/)
 
+#Screenshot
+
+![Wireframe](https://imgur.com/ABjly9h.png)
+
+![Wireframe](https://imgur.com/qesj3de.png)
+
 # Technologies used:
 
 - HTML
