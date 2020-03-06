@@ -25,5 +25,11 @@ function update(req, res) {
   }
 
   function deleteOne(req, res) {
-
+    User.findOne({'comments._id': req.params.id}, function(err, user) {
+        const commentSubdoc = user.comments.id(req.params.id);
+        commentSubdoc.remove();
+        user.save(function(err) {
+            res.redirect(`/albums/${album.id}`);
+        })
+    })
   }
