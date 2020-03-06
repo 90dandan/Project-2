@@ -6,14 +6,14 @@
     <div>Release Year: </div>
     <div><%= album.releaseYear %></div>
     <h2>Comments</h2>
-    <form id="add-comments-form" method="POST" action="/albums/<%= album._id %>/comments">
-        <label>Comment:</label>
-        <textarea name="content"></textarea>
-        <input type="submit" value="Add Comment">
-    </form>
+    <label>Comment:</label>
     <% comments.forEach(function(a) { %>
-    <div><%= album.comments %></div>
+    <form id="add-comments-form" method="POST" action="/albums/<%= album._id %>/comments">
+        <input type="submit" value="Add Comment">
+        <textarea name="content"><%= a.content %><</textarea>
+    </form>
     <% }); %>
+    <div><%= album.comments %></div>
 </section>
 </body>
 
