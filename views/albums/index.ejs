@@ -11,13 +11,14 @@
   <a href="/albums/new">Add Album</a>
   <tbody>
     <% user.albums.forEach(function(a) { %>
-      <tr>
-        <td><%= a.title %></td>
-        <td><%= a.releaseYear %></td>
-        <td><a href="/albums/<%= a._id %>">DETAILS</a></td>
-      </tr>
-      <% }); %>
-    </tbody>
-  </table>
+    <tr>
+      <td><%= a.title %></td>
+      <td><%= a.releaseYear %></td>
+      <td><a href="/albums/<%= a._id %>">DETAILS</a></td>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>
 </body>
+
 </html>
