@@ -1,5 +1,6 @@
 const User = require('../models/user');
-const Album = require('../models/user')
+const Album = require('../models/user');
+const Comment = require('../models/comment');
 
 module.exports = {
   show,
