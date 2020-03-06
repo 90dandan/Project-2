@@ -10,7 +10,7 @@ const albumSchema = new Schema({
 }, {
     timestamps: true
 });
-module.exports = mongoose.model('Album', albumSchema);
+
 const userSchema = new mongoose.Schema({
     name: String,
     email: String,
@@ -21,3 +21,4 @@ const userSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('Album', albumSchema);

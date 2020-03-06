@@ -6,6 +6,5 @@ router.get('/', albumsCtrl.index)
 router.post('/add', albumsCtrl.addAlbum);
 router.get('/new', albumsCtrl.newAlbum);
 router.get('/:id', albumsCtrl.show);
-//router.post('/', albumsCtrl.create);
 
 module.exports = router;

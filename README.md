@@ -9,7 +9,7 @@
 ## view the app deployed by Heroku 
 [here](https://mmmkayultra.herokuapp.com/)
 
-#Screenshot
+# Screenshot
 
 ![Wireframe](https://imgur.com/ABjly9h.png)
 
